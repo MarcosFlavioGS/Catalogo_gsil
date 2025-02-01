@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Header } from '@/components/ui/header/header'
+import { company } from '@/data/company'
 
 export default function AboutPage() {
   return (
@@ -11,7 +12,7 @@ export default function AboutPage() {
       {/* Hero Section */}
       <div className='bg-gray-50 py-20'>
         <div className='container mx-auto px-4 text-center'>
-          <h1 className='text-4xl font-bold text-gray-900 mb-4'>Sobre a GSil Papéis</h1>
+          <h1 className='text-4xl font-bold text-gray-900 mb-4'>Sobre a {company.name}</h1>
           <p className='text-lg text-muted-foreground'>Conheça mais sobre nossa história, missão e equipe.</p>
         </div>
       </div>
@@ -30,9 +31,10 @@ export default function AboutPage() {
           </div>
           <div className='relative h-96'>
             <Image
-              src='/images/about-mission.jpg' // Replace with your image
+              src={company.logoUrl} // Replace with your image
               alt='Nossa Missão'
-              fill
+              width={500}
+              height={500}
               className='object-cover rounded-lg'
             />
           </div>
