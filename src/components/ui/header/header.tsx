@@ -65,7 +65,7 @@ export function Header() {
                 href={company.webSite}
                 target='_blank'
                 rel='noopener noreferrer'>
-                Visite Nosso Site
+                Visite Nossa Loja
               </Link>
             </Button>
 

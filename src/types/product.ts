@@ -6,5 +6,5 @@ export interface Product {
   category: string
   imageUrl: string
   sizeOptions?: string[]
-  weight?: string
+  weight?: string[]
 }

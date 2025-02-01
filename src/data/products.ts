@@ -9,7 +9,7 @@ export const productList: Product[] = [
     category: 'Seda',
     imageUrl: '/seda.png',
     sizeOptions: ['120cm', '160cm', '50cm', '70cm', '100cm'],
-    weight: '20g/m²'
+    weight: ['20g/m²']
   },
   {
     id: '2',
@@ -19,7 +19,7 @@ export const productList: Product[] = [
     category: 'Kraft',
     imageUrl: '/kraft.png',
     sizeOptions: ['120cm', '160cm'],
-    weight: '40g/m²'
+    weight: ['40g/m²']
   },
   {
     id: '3',
@@ -29,7 +29,7 @@ export const productList: Product[] = [
     category: 'Molde',
     imageUrl: '/kraft.png',
     sizeOptions: ['100cm', '120cm', '160cm'],
-    weight: '40g/m²'
+    weight: ['40g/m²', '80g/m²', '200g/m²']
   },
   {
     id: '4',
@@ -39,7 +39,7 @@ export const productList: Product[] = [
     category: 'Intercalar',
     imageUrl: '/kraft.png',
     sizeOptions: ['160cm', '180cm'],
-    weight: '40g/m²'
+    weight: ['30g/m²']
   },
   {
     id: '5',
@@ -49,7 +49,7 @@ export const productList: Product[] = [
     category: 'Branco',
     imageUrl: '/seda.png',
     sizeOptions: ['160cm', '180cm', '184cm'],
-    weight: '40g/m²'
+    weight: ['40g/m²']
   },
   {
     id: '6',
@@ -59,6 +59,6 @@ export const productList: Product[] = [
     category: 'Mix',
     imageUrl: '/kraft.png',
     sizeOptions: ['120cm', '160cm', '180cm', '184cm'],
-    weight: '40g/m²'
+    weight: ['40g/m²', '60g/m²']
   }
 ]

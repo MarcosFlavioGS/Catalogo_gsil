@@ -42,8 +42,8 @@ export default function CatalogPage() {
                 )}
                 {product.weight && (
                   <div className='text-sm'>
-                    <span className='font-medium'>Gramatura: </span>
-                    {product.weight}
+                    <span className='font-medium'>Gramaturas: </span>
+                    {product.weight.join(', ')}
                   </div>
                 )}
               </div>
