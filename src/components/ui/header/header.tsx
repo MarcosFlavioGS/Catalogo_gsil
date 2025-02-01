@@ -54,7 +54,7 @@ export function Header() {
           </nav>
 
           {/* External Link and Cart */}
-          <div className='hidden md:flex items-center gap-4'>
+          <div className='md:flex items-center gap-4'>
             {/* External Link */}
             <Button
               asChild
@@ -79,31 +79,6 @@ export function Header() {
               </span>
             </Button>
           </div>
-        </div>
-
-        {/* Mobile External Link and Cart */}
-        <div className='md:hidden flex justify-end gap-4 mt-2'>
-          <Button
-            asChild
-            variant='outline'>
-            <Link
-              href={company.webSite}
-              target='_blank'
-              rel='noopener noreferrer'>
-              Visite Nosso Site
-            </Link>
-          </Button>
-
-          <Button
-            variant='ghost'
-            size='icon'
-            className='relative'>
-            <ShoppingCart className='h-5 w-5' />
-            <span className='sr-only'>Carrinho</span>
-            <span className='absolute top-0 right-0 bg-primary text-white rounded-full text-xs px-1.5 py-0.5'>
-              0
-            </span>
-          </Button>
         </div>
       </div>
     </header>
