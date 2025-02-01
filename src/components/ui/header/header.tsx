@@ -15,12 +15,14 @@ export function Header() {
       <div className='container mx-auto px-4'>
         <div className='flex items-center justify-between h-16'>
           {/* Logo and Main Navigation */}
-          <div className='flex items-center gap-4'>
+          <div className='flex items-center gap-2'>
             {/* Logo */}
             <Link
               href='/'
               className='flex items-center gap-2'>
-              <span className='text-2xl font-bold text-primary'>{company.name}</span>
+              <span className={`${isMenuOpen ? 'text-1xl' : 'text-2xl'} font-bold text-primary `}>
+                {company.name}
+              </span>
             </Link>
 
             {/* Mobile Menu Toggle */}
