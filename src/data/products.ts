@@ -18,8 +18,8 @@ export const productList: Product[] = [
     price: 32.5,
     category: 'Kraft',
     imageUrl: '/products/kraft.jpg',
-    sizeOptions: ['120cm', '160cm'],
-    weight: ['40g/m²']
+    sizeOptions: ['160cm x 250m', '170cm x 250m', '180cm x 250m'],
+    weight: ['35g/m²']
   },
   {
     id: '3',
@@ -28,8 +28,8 @@ export const productList: Product[] = [
     price: 32.5,
     category: 'Molde',
     imageUrl: '/products/Molde1.jpg',
-    sizeOptions: ['100cm', '120cm', '160cm'],
-    weight: ['80g/m²', '200g/m²']
+    sizeOptions: ['120cm'],
+    weight: ['80g/m²', '120/m²', '140/m²', '200g/m²', '300g/m²']
   },
   {
     id: '4',
@@ -38,8 +38,8 @@ export const productList: Product[] = [
     price: 32.5,
     category: 'Intercalar',
     imageUrl: '/products/Intercalar.jpg',
-    sizeOptions: ['160cm', '180cm'],
-    weight: ['30g/m²']
+    sizeOptions: ['160cm x 300m', '180cm x 300m'],
+    weight: ['24g/m²']
   },
   {
     id: '5',

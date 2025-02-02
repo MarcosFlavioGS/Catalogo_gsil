@@ -2,12 +2,13 @@
 
 import { Header } from '@/components/ui/header/header'
 import Footer from '@/components/ui/footer/footer'
-
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { useState } from 'react'
+
+import { company } from '@/data/company'
 
 export default function ContactPage() {
   const [name, setName] = useState('')
@@ -15,11 +16,9 @@ export default function ContactPage() {
   const [message, setMessage] = useState('')
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-
     // Format the message for WhatsApp
     const whatsappMessage = `Name: ${name}%0AEmail: ${email}%0AMessage: ${message}`
-    const whatsappUrl = `https://wa.me/11981634571?text=${whatsappMessage}`
+    const whatsappUrl = `https://wa.me/${company.phone}?text=${whatsappMessage}`
 
     // Redirect to WhatsApp
     window.open(whatsappUrl, '_blank')
