@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { productList } from '@/data/products'
 import { company } from '@/data/company'
 import { Badge } from '@/components/ui/badge'
+import Link from 'next/link' // Import the Link component
 
 export default function CatalogPage() {
   return (
@@ -19,13 +20,15 @@ export default function CatalogPage() {
             key={product.id}
             className='hover:shadow-lg transition-shadow'>
             <div className='relative h-64'>
-              <Image
-                src={product.imageUrl}
-                alt={product.name}
-                fill
-                className='object-contain rounded-t-lg'
-                objectPosition='center'
-              />
+              <Link href={'/products/' + product.id}>
+                <Image
+                  src={product.imageUrl}
+                  alt={product.name}
+                  fill
+                  className='object-contain rounded-t-lg'
+                  objectPosition='center'
+                />
+              </Link>
             </div>
             <div className='p-6'>
               <div className='flex justify-between items-start mb-4'>
@@ -35,12 +38,6 @@ export default function CatalogPage() {
               <p className='text-muted-foreground mb-4'>{product.description}</p>
 
               <div className='space-y-2 mb-4'>
-                {product.sizeOptions && (
-                  <div className='text-sm'>
-                    <span className='font-medium'>Tamanhos: </span>
-                    {product.sizeOptions.join(', ')}
-                  </div>
-                )}
                 {product.weight && (
                   <div className='text-sm'>
                     <span className='font-medium'>Gramaturas: </span>
@@ -50,8 +47,16 @@ export default function CatalogPage() {
               </div>
 
               <div className='flex justify-between items-center mt-4'>
-                <span className='text-2xl font-bold'>R$ {product.price.toFixed(2).replace('.', ',')}</span>
-                <Button>Ver Detalhes</Button>
+                <span className='text-2xl font-bold'>
+                  A partir de R$ {product.price.toFixed(2).replace('.', ',')}
+                </span>
+                <Link
+                  href={`/products/${product.id}`}
+                  passHref>
+                  {' '}
+                  {/* Use the Link component */}
+                  <Button>Ver Detalhes</Button>
+                </Link>
               </div>
             </div>
           </Card>
