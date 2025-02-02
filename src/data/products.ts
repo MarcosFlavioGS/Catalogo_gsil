@@ -7,8 +7,8 @@ export const productList: Product[] = [
     description: 'Papel seda em bobina',
     price: 45.99,
     category: 'Seda',
-    imageUrl: '/seda.png',
-    sizeOptions: ['120cm', '160cm', '50cm', '70cm', '100cm'],
+    imageUrl: '/products/Seda4.jpg',
+    sizeOptions: ['50cm', '70cm', '120cm', '100cm', '160cm'],
     weight: ['20g/m²']
   },
   {
@@ -17,7 +17,7 @@ export const productList: Product[] = [
     description: 'Papel Kraft em bobina',
     price: 32.5,
     category: 'Kraft',
-    imageUrl: '/kraft.png',
+    imageUrl: '/products/kraft.jpg',
     sizeOptions: ['120cm', '160cm'],
     weight: ['40g/m²']
   },
@@ -27,9 +27,9 @@ export const productList: Product[] = [
     description: 'Papel Kraft molde em bobina',
     price: 32.5,
     category: 'Molde',
-    imageUrl: '/kraft.png',
+    imageUrl: '/products/Molde1.jpg',
     sizeOptions: ['100cm', '120cm', '160cm'],
-    weight: ['40g/m²', '80g/m²', '200g/m²']
+    weight: ['80g/m²', '200g/m²']
   },
   {
     id: '4',
@@ -37,7 +37,7 @@ export const productList: Product[] = [
     description: 'Papel de Intercalar em bobina',
     price: 32.5,
     category: 'Intercalar',
-    imageUrl: '/kraft.png',
+    imageUrl: '/products/Intercalar.jpg',
     sizeOptions: ['160cm', '180cm'],
     weight: ['30g/m²']
   },
@@ -47,8 +47,8 @@ export const productList: Product[] = [
     description: 'Papel branco sulfite',
     price: 32.5,
     category: 'Branco',
-    imageUrl: '/seda.png',
-    sizeOptions: ['160cm', '180cm', '184cm'],
+    imageUrl: '/products/branco.jpg',
+    sizeOptions: ['91,4cm', '160cm', '180cm', '184cm'],
     weight: ['40g/m²']
   },
   {
@@ -57,7 +57,7 @@ export const productList: Product[] = [
     description: 'Papel ecologico kraft mix',
     price: 32.5,
     category: 'Mix',
-    imageUrl: '/kraft.png',
+    imageUrl: '/products/mix.jpg',
     sizeOptions: ['120cm', '160cm', '180cm', '184cm'],
     weight: ['40g/m²', '60g/m²']
   }
