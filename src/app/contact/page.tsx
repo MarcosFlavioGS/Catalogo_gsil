@@ -15,9 +15,10 @@ export default function ContactPage() {
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
 
-  const handleSubmit = (e) => {
-    // Format the message for WhatsApp
-    const whatsappMessage = `Name: ${name}%0AEmail: ${email}%0AMessage: ${message}`
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    const whatsappMessage = `Nome: ${name}%0AEmail: ${email}%0AMensagem: ${message}`
     const whatsappUrl = `https://wa.me/${company.phone}?text=${whatsappMessage}`
 
     // Redirect to WhatsApp
