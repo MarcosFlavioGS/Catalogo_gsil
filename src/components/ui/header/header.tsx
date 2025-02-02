@@ -60,7 +60,7 @@ export function Header() {
             {/* External Link */}
             <Button
               asChild
-              variant='outline'>
+              variant='default'>
               <Link
                 href={company.webSite}
                 target='_blank'
