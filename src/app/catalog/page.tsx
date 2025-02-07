@@ -47,8 +47,10 @@ export default function CatalogPage() {
               </div>
 
               <div className='flex justify-between items-center mt-4'>
+                //{' '}
                 <span className='text-2xl font-bold'>
-                  A partir de R$ {product.price.toFixed(2).replace('.', ',')}
+                  // A partir de R$ {product.price.toFixed(2).replace('.', ',')}
+                  //{' '}
                 </span>
                 <Link
                   href={`/products/${product.id}`}
