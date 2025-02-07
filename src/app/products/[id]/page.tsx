@@ -40,11 +40,6 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             <h1 className='text-4xl font-bold'>{product.name}</h1>
             <p className='text-muted-foreground text-lg'>{product.description}</p>
 
-            {/* Price */}
-            <div className='text-3xl font-bold text-primary'>
-              R$ {product.price.toFixed(2).replace('.', ',')}
-            </div>
-
             {/* Size Options */}
             {product.sizeOptions && (
               <div className='space-y-2'>
@@ -61,7 +56,6 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                 </div>
               </div>
             )}
-
             {/* Weight Options */}
             {product.weight && (
               <div className='space-y-2'>
@@ -78,7 +72,6 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                 </div>
               </div>
             )}
-
             {/* Call to Action */}
             <div className='flex gap-4'>
               <Button
