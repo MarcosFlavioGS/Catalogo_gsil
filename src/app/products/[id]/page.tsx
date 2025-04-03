@@ -1,4 +1,4 @@
-import { productList } from '@/data/products'
+import productList from '@/data/products.json'
 import { Header } from '@/components/ui/header/header'
 import Footer from '@/components/ui/footer/footer'
 import Image from 'next/image'

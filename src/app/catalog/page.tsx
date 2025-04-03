@@ -1,7 +1,7 @@
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
-import { productList } from '@/data/products'
+import productList from '@/data/products.json'
 import { company } from '@/data/company'
 import { Badge } from '@/components/ui/badge'
 import Link from 'next/link' // Import the Link component
