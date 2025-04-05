@@ -6,9 +6,11 @@ import { ShoppingCart } from 'lucide-react'
 import { company } from '@/data/company'
 import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
+import useKartStore from '@/app/store'
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const kartCount = useKartStore((state) => state.itemCount)
 
   return (
     <header className='bg-white shadow-sm'>
@@ -53,6 +55,11 @@ export function Header() {
               className='block px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary transition-colors md:inline'>
               Contato
             </Link>
+            <Link
+              href='/products/new'
+              className='block px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary transition-colors md:inline'>
+              Novo Produto
+            </Link>
           </nav>
 
           {/* External Link and Cart */}
@@ -73,12 +80,15 @@ export function Header() {
             <Button
               variant='ghost'
               size='icon'
-              className='relative'>
-              <ShoppingCart className='h-5 w-5' />
-              <span className='sr-only'>Carrinho</span>
-              <span className='absolute top-0 right-0 bg-primary text-white rounded-full text-xs px-1.5 py-0.5'>
-                0
-              </span>
+              className='relative'
+              asChild>
+              <Link href='/cart'>
+                <ShoppingCart className='h-5 w-5' />
+                <span className='sr-only'>Carrinho</span>
+                <span className='absolute top-0 right-0 bg-primary text-white rounded-full text-xs px-1.5 py-0.5'>
+                  {kartCount}
+                </span>
+              </Link>
             </Button>
           </div>
         </div>
