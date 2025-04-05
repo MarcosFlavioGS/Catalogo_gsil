@@ -13,16 +13,19 @@ import productList from '@/data/products.json'
 import { Trash2 } from 'lucide-react'
 import { Product } from '@/types/product'
 
+// Type assertion for the imported JSON
+const typedProductList = productList as Product[]
+
 export default function CartPage() {
   const { items, removeItem } = useKartStore()
   const [cartProducts, setCartProducts] = useState<Product[]>([])
 
   useEffect(() => {
     // Filter products that are in the cart
-    if (productList.length == 0) {
+    if (!typedProductList || typedProductList.length === 0) {
       setCartProducts([])
     } else {
-      const products = productList.filter((product) => items.includes(product.id))
+      const products = typedProductList.filter((product) => items.includes(product.id))
       setCartProducts(products)
     }
   }, [items])

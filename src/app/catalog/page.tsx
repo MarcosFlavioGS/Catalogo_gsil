@@ -4,7 +4,11 @@ import Image from 'next/image'
 import productList from '@/data/products.json'
 import { company } from '@/data/company'
 import { Badge } from '@/components/ui/badge'
-import Link from 'next/link' // Import the Link component
+import Link from 'next/link'
+import { Product } from '@/types/product'
+
+// Type assertion for the imported JSON
+const typedProductList = productList as Product[]
 
 export default function CatalogPage() {
   return (
@@ -15,7 +19,7 @@ export default function CatalogPage() {
       </div>
 
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-        {productList.map((product) => (
+        {typedProductList.map((product) => (
           <Card
             key={product.id}
             className='hover:shadow-lg transition-shadow'>
@@ -50,8 +54,6 @@ export default function CatalogPage() {
                 <Link
                   href={`/products/${product.id}`}
                   passHref>
-                  {' '}
-                  {/* Use the Link component */}
                   <Button>Ver Detalhes</Button>
                 </Link>
               </div>

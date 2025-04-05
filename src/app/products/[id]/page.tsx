@@ -16,6 +16,9 @@ import { Card, CardContent } from '@/components/ui/card'
 import { use } from 'react'
 import { Product } from '@/types/product'
 
+// Type assertion for the imported JSON
+const typedProductList = productList as Product[]
+
 export default function ProductDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = use(params)
   const id = resolvedParams.id
@@ -28,7 +31,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
   const [isAddingToCart, setIsAddingToCart] = useState(false)
 
   useEffect(() => {
-    const foundProduct = productList.find((p) => p.id === id)
+    const foundProduct = typedProductList.find((p) => p.id === id)
     if (foundProduct) {
       setProduct(foundProduct)
       // Set default selections if available
