@@ -19,8 +19,12 @@ export default function CartPage() {
 
   useEffect(() => {
     // Filter products that are in the cart
-    const products = productList.filter((product) => items.includes(product.id))
-    setCartProducts(products)
+    if (productList.length == 0) {
+      setCartProducts([])
+    } else {
+      const products = productList.filter((product) => items.includes(product.id))
+      setCartProducts(products)
+    }
   }, [items])
 
   const handleRemoveItem = (productId: string) => {
