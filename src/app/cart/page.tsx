@@ -11,10 +11,11 @@ import { useEffect, useState } from 'react'
 import useKartStore from '@/app/store'
 import productList from '@/data/products.json'
 import { Trash2 } from 'lucide-react'
+import { Product } from '@/types/product'
 
 export default function CartPage() {
   const { items, removeItem } = useKartStore()
-  const [cartProducts, setCartProducts] = useState<any[]>([])
+  const [cartProducts, setCartProducts] = useState<Product[]>([])
 
   useEffect(() => {
     // Filter products that are in the cart

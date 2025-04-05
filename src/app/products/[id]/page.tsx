@@ -14,6 +14,7 @@ import { Label } from '@/components/ui/label'
 import { toast } from 'sonner'
 import { Card, CardContent } from '@/components/ui/card'
 import { use } from 'react'
+import { Product } from '@/types/product'
 
 export default function ProductDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = use(params)
@@ -21,7 +22,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
   const router = useRouter()
   const addItem = useKartStore((state) => state.addItem)
 
-  const [product, setProduct] = useState<any>(null)
+  const [product, setProduct] = useState<Product | null>(null)
   const [selectedSize, setSelectedSize] = useState<string>('')
   const [selectedWeight, setSelectedWeight] = useState<string>('')
   const [isAddingToCart, setIsAddingToCart] = useState(false)

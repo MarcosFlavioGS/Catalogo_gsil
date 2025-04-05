@@ -128,5 +128,34 @@
     "weight": [
       "20g/m²"
     ]
+  },
+  {
+    "id": "1743879531282",
+    "name": "papel test",
+    "description": "papel de teste de cadastro",
+    "price": 33,
+    "category": "teste",
+    "imageUrl": "/seda.png",
+    "sizeOptions": [
+      "50cm. 60cm"
+    ],
+    "weight": [
+      "20g/m²"
+    ]
+  },
+  {
+    "id": "1743879654774",
+    "name": "Marcos Flávio",
+    "description": "teste",
+    "price": 33,
+    "category": "teste",
+    "imageUrl": "/seda.png",
+    "sizeOptions": [
+      "50cm",
+      "60cm"
+    ],
+    "weight": [
+      "20g/m²"
+    ]
   }
 ]
