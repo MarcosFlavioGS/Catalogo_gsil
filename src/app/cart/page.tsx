@@ -8,12 +8,12 @@ import { Badge } from '@/components/ui/badge'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import useKartStore from '@/app/store'
+import useCartStore from '@/app/store'
 import { Trash2 } from 'lucide-react'
 import { ProductCart } from '@/types/product'
 
 export default function CartPage() {
-  const { items, removeItem } = useKartStore()
+  const { items, removeItem } = useCartStore()
   const [cartProducts, setCartProducts] = useState<ProductCart[]>([])
 
   useEffect(() => {

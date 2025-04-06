@@ -7,7 +7,7 @@ import Image from 'next/image'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { useState, useEffect } from 'react'
-import useKartStore from '@/app/store'
+import useCartStore from '@/app/store'
 import { useRouter } from 'next/navigation'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Label } from '@/components/ui/label'
@@ -23,7 +23,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
   const resolvedParams = use(params)
   const id = resolvedParams.id
   const router = useRouter()
-  const addItem = useKartStore((state) => state.addItem)
+  const addItem = useCartStore((state) => state.addItem)
 
   const [product, setProduct] = useState<Product | null>(null)
   const [selectedSize, setSelectedSize] = useState<string>('')

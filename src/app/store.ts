@@ -1,14 +1,14 @@
 import { ProductCart } from '@/types/product'
 import { create } from 'zustand'
 
-interface Kart {
+interface Cart {
   itemCount: number
   items: ProductCart[]
   addItem: (item: ProductCart) => void
   removeItem: (itemId: string) => void
 }
 
-const useKartStore = create<Kart>((set) => ({
+const useCartStore = create<Cart>((set) => ({
   itemCount: 0,
   items: [],
   addItem: (item: ProductCart) =>
@@ -23,4 +23,4 @@ const useKartStore = create<Kart>((set) => ({
     }))
 }))
 
-export default useKartStore
+export default useCartStore

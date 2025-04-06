@@ -6,11 +6,11 @@ import { ShoppingCart } from 'lucide-react'
 import { company } from '@/data/company'
 import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
-import useKartStore from '@/app/store'
+import useCartStore from '@/app/store'
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const kartCount = useKartStore((state) => state.itemCount)
+  const cartCount = useCartStore((state) => state.itemCount)
 
   return (
     <header className='bg-white shadow-sm'>
@@ -86,7 +86,7 @@ export function Header() {
                 <ShoppingCart className='h-5 w-5' />
                 <span className='sr-only'>Carrinho</span>
                 <span className='absolute top-0 right-0 bg-primary text-white rounded-full text-xs px-1.5 py-0.5'>
-                  {kartCount}
+                  {cartCount}
                 </span>
               </Link>
             </Button>
