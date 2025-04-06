@@ -55,8 +55,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
   const handleAddToCart = () => {
     setIsAddingToCart(true)
 
-    // Add the product to the cart with selected options
-    addItem({
+    const productCart: ProductCart = {
       id: product.id,
       name: product.name,
       description: product.description,
@@ -66,7 +65,10 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
       size: selectedSize,
       weight: selectedWeight,
       length: selectedLength
-    })
+    }
+
+    // Add the product to the cart with selected options
+    addItem(productCart)
 
     // Show success message
     toast.success('Produto adicionado ao carrinho!')
@@ -170,8 +172,13 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
                     onValueChange={setSelectedLength}
                     className='grid grid-cols-2 gap-4'>
                     {product.lengthOptions.map((length: string, index: number) => (
-                      <div key={index} className='flex items-center space-x-2'>
-                        <RadioGroupItem value={length} id={`length-${index}`} />
+                      <div
+                        key={index}
+                        className='flex items-center space-x-2'>
+                        <RadioGroupItem
+                          value={length}
+                          id={`length-${index}`}
+                        />
                         <Label htmlFor={`length-${index}`}>{length}</Label>
                       </div>
                     ))}
