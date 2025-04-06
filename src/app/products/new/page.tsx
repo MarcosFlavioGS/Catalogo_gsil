@@ -18,7 +18,8 @@ export default function NewProductPage() {
     category: '',
     imageUrl: '',
     sizeOptions: '',
-    weight: ''
+    weight: '',
+    lengthOptions: ''
   })
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -28,6 +29,7 @@ export default function NewProductPage() {
       // Convert comma-separated strings to arrays
       const sizeOptions = formData.sizeOptions.split(',').map((option) => option.trim())
       const weight = formData.weight.split(',').map((w) => w.trim())
+      const lengthOptions = formData.lengthOptions ? formData.lengthOptions.split(',').map((l) => l.trim()) : []
 
       const newProduct = {
         id: Date.now().toString(), // Simple ID generation
@@ -37,7 +39,8 @@ export default function NewProductPage() {
         category: formData.category,
         imageUrl: formData.imageUrl,
         sizeOptions,
-        weight
+        weight,
+        lengthOptions
       }
 
       // Send the new product to the API
@@ -158,6 +161,18 @@ export default function NewProductPage() {
               placeholder='Ex: 20g/m², 35g/m²'
               required
             />
+          </div>
+
+          <div className='space-y-2'>
+            <Label htmlFor='lengthOptions'>Opções de Metragem (separadas por vírgula)</Label>
+            <Input
+              id='lengthOptions'
+              name='lengthOptions'
+              value={formData.lengthOptions}
+              onChange={handleChange}
+              placeholder='Ex: 100m, 200m, 300m'
+            />
+            <p className='text-sm text-muted-foreground'>Deixe em branco se o produto não tiver opções de metragem</p>
           </div>
 
           <div className='flex gap-4'>
