@@ -28,7 +28,8 @@ export default function CheckoutPage() {
       message += `${index + 1}. ${item.name}\n`
       message += `   - Preço: R$ ${item.price.toFixed(2)}\n`
       if (item.size) message += `   - Tamanho: ${item.size}\n`
-      if (item.weight) message += `   - Gramatura: ${item.weight}\n\n`
+      if (item.weight) message += `   - Gramatura: ${item.weight}\n`
+      if (item.length) message += `   - Metragem: ${item.length}\n\n`
     })
     
     message += `\nMeu email para contato: ${email}\n\n`
@@ -111,6 +112,7 @@ export default function CheckoutPage() {
                           <h3 className='font-medium'>{item.name}</h3>
                           {item.size && <p className='text-sm text-muted-foreground'>Tamanho: {item.size}</p>}
                           {item.weight && <p className='text-sm text-muted-foreground'>Gramatura: {item.weight}</p>}
+                          {item.length && <p className='text-sm text-muted-foreground'>Metragem: {item.length}</p>}
                         </div>
                         <p className='font-medium'>R$ {item.price.toFixed(2)}</p>
                       </div>
@@ -130,4 +132,4 @@ export default function CheckoutPage() {
       <Footer />
     </div>
   )
-} 
+}

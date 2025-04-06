@@ -81,14 +81,20 @@ export default function CartPage() {
                     </div>
                     {product.size && (
                       <div className='mt-2'>
-                        <span className='text-sm font-medium'>Tamanho escolhido: </span>
+                        <span className='text-sm font-medium'>Tamanho: </span>
                         <span className='text-sm text-muted-foreground'>{product.size}</span>
                       </div>
                     )}
                     {product.weight && (
                       <div className='mt-1'>
-                        <span className='text-sm font-medium'>Gramatura ecolhida: </span>
+                        <span className='text-sm font-medium'>Gramatura: </span>
                         <span className='text-sm text-muted-foreground'>{product.weight}</span>
+                      </div>
+                    )}
+                    {product.length && (
+                      <div className='mt-1'>
+                        <span className='text-sm font-medium'>Metragem: </span>
+                        <span className='text-sm text-muted-foreground'>{product.length}</span>
                       </div>
                     )}
                   </div>
@@ -107,7 +113,7 @@ export default function CartPage() {
                   <Link href='/'>Continuar Comprando</Link>
                 </Button>
                 <Button asChild>
-                  <Link href='/checkout'>Finalizar Compra</Link>
+                  <Link href='/checkout'>Pedir via whatsapp</Link>
                 </Button>
               </div>
             </div>

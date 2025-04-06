@@ -15,6 +15,11 @@
     ],
     "weight": [
       "20g/m²"
+    ],
+    "lengthOptions": [
+      "100m",
+      "200m",
+      "300m"
     ]
   },
   {
@@ -25,12 +30,17 @@
     "category": "Kraft",
     "imageUrl": "/products/kraft.jpg",
     "sizeOptions": [
-      "160cm x 250m",
-      "170cm x 250m",
-      "180cm x 250m"
+      "160cm",
+      "170cm",
+      "180cm"
     ],
     "weight": [
       "35g/m²"
+    ],
+    "lengthOptions": [
+      "250m",
+      "500m",
+      "1000m"
     ]
   },
   {
@@ -49,6 +59,10 @@
       "140/m²",
       "200g/m²",
       "300g/m²"
+    ],
+    "lengthOptions": [
+      "100m",
+      "200m"
     ]
   },
   {
@@ -59,11 +73,15 @@
     "category": "Intercalar",
     "imageUrl": "/products/Intercalar.jpg",
     "sizeOptions": [
-      "160cm x 300m",
-      "180cm x 300m"
+      "160cm",
+      "180cm"
     ],
     "weight": [
       "24g/m²"
+    ],
+    "lengthOptions": [
+      "300m",
+      "600m"
     ]
   },
   {
@@ -99,6 +117,10 @@
     "weight": [
       "40g/m²",
       "60g/m²"
+    ],
+    "lengthOptions": [
+      "200m",
+      "400m"
     ]
   },
   {
@@ -113,6 +135,10 @@
     ],
     "weight": [
       "20g/m²"
+    ],
+    "lengthOptions": [
+      "50m",
+      "100m"
     ]
   },
   {
@@ -156,6 +182,10 @@
     ],
     "weight": [
       "20g/m²"
+    ],
+    "lengthOptions": [
+      "75m",
+      "150m"
     ]
   }
 ]

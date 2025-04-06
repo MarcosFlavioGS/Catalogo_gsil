@@ -28,6 +28,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
   const [product, setProduct] = useState<Product | null>(null)
   const [selectedSize, setSelectedSize] = useState<string>('')
   const [selectedWeight, setSelectedWeight] = useState<string>('')
+  const [selectedLength, setSelectedLength] = useState<string>('')
   const [isAddingToCart, setIsAddingToCart] = useState(false)
 
   useEffect(() => {
@@ -41,6 +42,9 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
       if (foundProduct.weight && foundProduct.weight.length > 0) {
         setSelectedWeight(foundProduct.weight[0])
       }
+      if (foundProduct.lengthOptions && foundProduct.lengthOptions.length > 0) {
+        setSelectedLength(foundProduct.lengthOptions[0])
+      }
     }
   }, [id])
 
@@ -51,19 +55,18 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
   const handleAddToCart = () => {
     setIsAddingToCart(true)
 
-    const productCart: ProductCart = {
+    // Add the product to the cart with selected options
+    addItem({
       id: product.id,
       name: product.name,
       description: product.description,
       price: product.price,
-      imageUrl: product.imageUrl,
       category: product.category,
+      imageUrl: product.imageUrl,
       size: selectedSize,
-      weight: selectedWeight
-    }
-
-    // Add the product to the cart
-    addItem(productCart)
+      weight: selectedWeight,
+      length: selectedLength
+    })
 
     // Show success message
     toast.success('Produto adicionado ao carrinho!')
@@ -152,6 +155,24 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
                           className='text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70'>
                           {weight}
                         </Label>
+                      </div>
+                    ))}
+                  </RadioGroup>
+                </div>
+              )}
+
+              {/* Length Options */}
+              {product.lengthOptions && product.lengthOptions.length > 0 && (
+                <div className='space-y-4'>
+                  <h3 className='text-xl font-semibold'>Metragem Disponível</h3>
+                  <RadioGroup
+                    value={selectedLength}
+                    onValueChange={setSelectedLength}
+                    className='grid grid-cols-2 gap-4'>
+                    {product.lengthOptions.map((length: string, index: number) => (
+                      <div key={index} className='flex items-center space-x-2'>
+                        <RadioGroupItem value={length} id={`length-${index}`} />
+                        <Label htmlFor={`length-${index}`}>{length}</Label>
                       </div>
                     ))}
                   </RadioGroup>

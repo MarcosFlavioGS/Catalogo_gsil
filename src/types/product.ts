@@ -7,9 +7,11 @@ export interface Product {
   imageUrl: string
   sizeOptions?: string[]
   weight?: string[]
+  lengthOptions?: string[]
 }
 
-export type ProductCart = Omit<Product, 'sizeOptions' | 'weight'> & {
+export type ProductCart = Omit<Product, 'sizeOptions' | 'weight' | 'lengthOptions'> & {
   size: string
   weight: string
+  length: string
 }
