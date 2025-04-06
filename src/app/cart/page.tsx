@@ -106,7 +106,9 @@ export default function CartPage() {
                   asChild>
                   <Link href='/'>Continuar Comprando</Link>
                 </Button>
-                <Button>Finalizar Compra</Button>
+                <Button asChild>
+                  <Link href='/checkout'>Finalizar Compra</Link>
+                </Button>
               </div>
             </div>
           </div>
