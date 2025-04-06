@@ -8,3 +8,8 @@ export interface Product {
   sizeOptions?: string[]
   weight?: string[]
 }
+
+export type ProductCart = Omit<Product, 'sizeOptions' | 'weight'> & {
+  size: string
+  weight: string
+}

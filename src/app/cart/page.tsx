@@ -9,25 +9,16 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import useKartStore from '@/app/store'
-import productList from '@/data/products.json'
 import { Trash2 } from 'lucide-react'
-import { Product } from '@/types/product'
-
-// Type assertion for the imported JSON
-const typedProductList = productList as Product[]
+import { ProductCart } from '@/types/product'
 
 export default function CartPage() {
   const { items, removeItem } = useKartStore()
-  const [cartProducts, setCartProducts] = useState<Product[]>([])
+  const [cartProducts, setCartProducts] = useState<ProductCart[]>([])
 
   useEffect(() => {
     // Filter products that are in the cart
-    if (!typedProductList || typedProductList.length === 0) {
-      setCartProducts([])
-    } else {
-      const products = typedProductList.filter((product) => items.includes(product.id))
-      setCartProducts(products)
-    }
+    setCartProducts(items)
   }, [items])
 
   const handleRemoveItem = (productId: string) => {
@@ -88,18 +79,16 @@ export default function CartPage() {
                     <div className='mt-2'>
                       <span className='font-medium'>Preço: R$ {product.price.toFixed(2)}</span>
                     </div>
-                    {product.sizeOptions && product.sizeOptions.length > 0 && (
+                    {product.size && (
                       <div className='mt-2'>
-                        <span className='text-sm font-medium'>Tamanhos disponíveis: </span>
-                        <span className='text-sm text-muted-foreground'>
-                          {product.sizeOptions.join(', ')}
-                        </span>
+                        <span className='text-sm font-medium'>Tamanho escolhido: </span>
+                        <span className='text-sm text-muted-foreground'>{product.size}</span>
                       </div>
                     )}
-                    {product.weight && product.weight.length > 0 && (
+                    {product.weight && (
                       <div className='mt-1'>
-                        <span className='text-sm font-medium'>Gramaturas disponíveis: </span>
-                        <span className='text-sm text-muted-foreground'>{product.weight.join(', ')}</span>
+                        <span className='text-sm font-medium'>Gramatura ecolhida: </span>
+                        <span className='text-sm text-muted-foreground'>{product.weight}</span>
                       </div>
                     )}
                   </div>

@@ -1,23 +1,24 @@
+import { ProductCart } from '@/types/product'
 import { create } from 'zustand'
 
 interface Kart {
   itemCount: number
-  items: string[]
-  addItem: (item: string) => void
-  removeItem: (item: string) => void
+  items: ProductCart[]
+  addItem: (item: ProductCart) => void
+  removeItem: (itemId: string) => void
 }
 
 const useKartStore = create<Kart>((set) => ({
   itemCount: 0,
   items: [],
-  addItem: (item: string) =>
+  addItem: (item: ProductCart) =>
     set((state) => ({
       items: [...state.items, item],
       itemCount: state.itemCount + 1
     })),
-  removeItem: (item: string) =>
+  removeItem: (itemId: string) =>
     set((state) => ({
-      items: state.items.filter((i) => i !== item),
+      items: state.items.filter((i) => i.id !== itemId),
       itemCount: state.itemCount - 1
     }))
 }))

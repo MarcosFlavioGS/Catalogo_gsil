@@ -14,7 +14,7 @@ import { Label } from '@/components/ui/label'
 import { toast } from 'sonner'
 import { Card, CardContent } from '@/components/ui/card'
 import { use } from 'react'
-import { Product } from '@/types/product'
+import { Product, ProductCart } from '@/types/product'
 
 // Type assertion for the imported JSON
 const typedProductList = productList as Product[]
@@ -51,8 +51,19 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
   const handleAddToCart = () => {
     setIsAddingToCart(true)
 
+    const productCart: ProductCart = {
+      id: product.id,
+      name: product.name,
+      description: product.description,
+      price: product.price,
+      imageUrl: product.imageUrl,
+      category: product.category,
+      size: selectedSize,
+      weight: selectedWeight
+    }
+
     // Add the product to the cart
-    addItem(product.id)
+    addItem(productCart)
 
     // Show success message
     toast.success('Produto adicionado ao carrinho!')
