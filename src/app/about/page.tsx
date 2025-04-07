@@ -22,12 +22,7 @@ export default function AboutPage() {
         <div className='grid grid-cols-1 md:grid-cols-2 gap-12 items-center'>
           <div>
             <h2 className='text-3xl font-bold text-gray-900 mb-6'>Nossa Missão</h2>
-            <p className='text-muted-foreground leading-relaxed'>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-              laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-              voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            </p>
+            <p className='text-muted-foreground leading-relaxed'>{company.about}</p>
           </div>
           <div className='relative h-96'>
             <Image
