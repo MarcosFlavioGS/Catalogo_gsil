@@ -33,8 +33,7 @@ export default function CatalogPage() {
                     src={product.imageUrl}
                     alt={product.name}
                     fill
-                    className='object-contain rounded-t-lg'
-                    objectPosition='center'
+                    className='object-contain object-center rounded-t-lg'
                   />
                 </Link>
               </div>
