@@ -2,6 +2,22 @@ import { NextResponse } from 'next/server'
 import fs from 'fs'
 import path from 'path'
 
+export async function GET() {
+  try {
+    // Read the products from the file
+    const filePath = path.join(process.cwd(), 'src/data/products.json')
+    const productsData = JSON.parse(fs.readFileSync(filePath, 'utf8'))
+
+    return NextResponse.json(productsData)
+  } catch (error) {
+    console.error('Error fetching products:', error)
+    return NextResponse.json(
+      { error: 'Failed to fetch products' },
+      { status: 500 }
+    )
+  }
+}
+
 export async function POST(request: Request) {
   try {
     const newProduct = await request.json()
