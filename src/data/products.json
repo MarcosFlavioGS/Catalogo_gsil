@@ -17,8 +17,8 @@
       "20g/m²"
     ],
     "lengthOptions": [
-	  "50m",
-	  "70m",
+      "50m",
+      "70m",
       "100m",
       "200m"
     ]
@@ -101,11 +101,11 @@
     "weight": [
       "40g/m²"
     ],
-	 "lengthOptions": [
-       "914cm",
-       "70m",
-       "100m",
-       "250m"
+    "lengthOptions": [
+      "914cm",
+      "70m",
+      "100m",
+      "250m"
     ]
   },
   {
@@ -195,6 +195,23 @@
     "lengthOptions": [
       "75m",
       "150m"
+    ]
+  },
+  {
+    "id": "1744048610043",
+    "name": "Papel teste com imagem",
+    "description": "esse é um teste pra um produto salvo com uma imagem",
+    "price": 42,
+    "category": "teste",
+    "imageUrl": "/products/1744048570961-eu.png",
+    "sizeOptions": [
+      "50cm"
+    ],
+    "weight": [
+      "20g/m²"
+    ],
+    "lengthOptions": [
+      "180cm"
     ]
   }
 ]

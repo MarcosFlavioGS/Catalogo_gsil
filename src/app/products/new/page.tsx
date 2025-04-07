@@ -6,11 +6,16 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
+import { toast } from 'sonner'
 
 export default function NewProductPage() {
   const router = useRouter()
+  const fileInputRef = useRef<HTMLInputElement>(null)
+  const [isUploading, setIsUploading] = useState(false)
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null)
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -60,7 +65,7 @@ export default function NewProductPage() {
       router.push('/')
     } catch (error) {
       console.error('Error adding product:', error)
-      alert('Failed to add product. Please try again.')
+      toast.error('Falha ao adicionar produto. Por favor, tente novamente.')
     }
   }
 
@@ -70,6 +75,51 @@ export default function NewProductPage() {
       ...prev,
       [name]: value
     }))
+  }
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+
+    // Create a preview URL
+    const objectUrl = URL.createObjectURL(file)
+    setPreviewUrl(objectUrl)
+
+    // Upload the file
+    setIsUploading(true)
+    try {
+      const formData = new FormData()
+      formData.append('file', file)
+
+      const response = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to upload image')
+      }
+
+      const data = await response.json()
+      
+      // Update the form data with the uploaded image URL
+      setFormData(prev => ({
+        ...prev,
+        imageUrl: data.url
+      }))
+      
+      toast.success('Imagem enviada com sucesso!')
+    } catch (error) {
+      console.error('Error uploading image:', error)
+      toast.error('Falha ao enviar imagem. Por favor, tente novamente.')
+      setPreviewUrl(null)
+    } finally {
+      setIsUploading(false)
+    }
+  }
+
+  const triggerFileInput = () => {
+    fileInputRef.current?.click()
   }
 
   return (
@@ -129,14 +179,55 @@ export default function NewProductPage() {
           </div>
 
           <div className='space-y-2'>
-            <Label htmlFor='imageUrl'>URL da Imagem</Label>
-            <Input
-              id='imageUrl'
-              name='imageUrl'
-              value={formData.imageUrl}
-              onChange={handleChange}
-              required
-            />
+            <Label>Imagem do Produto</Label>
+            <div className='flex flex-col gap-4'>
+              <input
+                type='file'
+                ref={fileInputRef}
+                onChange={handleFileChange}
+                accept='image/*'
+                className='hidden'
+              />
+              
+              <div className='flex items-center gap-4'>
+                <Button 
+                  type='button' 
+                  variant='outline' 
+                  onClick={triggerFileInput}
+                  disabled={isUploading}>
+                  {isUploading ? 'Enviando...' : 'Selecionar Imagem'}
+                </Button>
+                
+                {formData.imageUrl && (
+                  <span className='text-sm text-muted-foreground'>
+                    Imagem selecionada: {formData.imageUrl}
+                  </span>
+                )}
+              </div>
+              
+              {previewUrl && (
+                <div className='relative h-48 w-48 border rounded-md overflow-hidden'>
+                  <Image
+                    src={previewUrl}
+                    alt='Preview'
+                    fill
+                    className='object-contain'
+                  />
+                </div>
+              )}
+              
+              <div className='text-sm text-muted-foreground'>
+                <p>Ou insira a URL da imagem manualmente:</p>
+                <Input
+                  id='imageUrl'
+                  name='imageUrl'
+                  value={formData.imageUrl}
+                  onChange={handleChange}
+                  placeholder='/products/nome-da-imagem.jpg'
+                  className='mt-1'
+                />
+              </div>
+            </div>
           </div>
 
           <div className='space-y-2'>
