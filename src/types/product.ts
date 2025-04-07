@@ -14,4 +14,5 @@ export type ProductCart = Omit<Product, 'sizeOptions' | 'weight' | 'lengthOption
   size: string
   weight: string
   length: string
+  quantity: number
 }

@@ -9,20 +9,32 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import useCartStore from '@/app/store'
-import { Trash2 } from 'lucide-react'
+import { Trash2, Minus, Plus } from 'lucide-react'
 import { ProductCart } from '@/types/product'
 
 export default function CartPage() {
-  const { items, removeItem } = useCartStore()
+  const { items, removeItem, updateQuantity } = useCartStore()
   const [cartProducts, setCartProducts] = useState<ProductCart[]>([])
 
   useEffect(() => {
-    // Filter products that are in the cart
     setCartProducts(items)
   }, [items])
 
   const handleRemoveItem = (productId: string) => {
     removeItem(productId)
+  }
+
+  const handleUpdateQuantity = (productId: string, newQuantity: number) => {
+    if (newQuantity < 1) return
+    updateQuantity(productId, newQuantity)
+  }
+
+  const calculateItemTotal = (item: ProductCart) => {
+    return item.price * item.quantity
+  }
+
+  const calculateCartTotal = () => {
+    return cartProducts.reduce((total, item) => total + calculateItemTotal(item), 0)
   }
 
   return (
@@ -97,14 +109,42 @@ export default function CartPage() {
                         <span className='text-sm text-muted-foreground'>{product.length}</span>
                       </div>
                     )}
+                    <div className='mt-4 flex items-center gap-4'>
+                      <div className='flex items-center gap-2'>
+                        <Button
+                          variant='outline'
+                          size='icon'
+                          onClick={() => handleUpdateQuantity(product.id, product.quantity - 1)}
+                          className='h-8 w-8'>
+                          <Minus className='h-4 w-4' />
+                        </Button>
+                        <span className='w-8 text-center'>{product.quantity}</span>
+                        <Button
+                          variant='outline'
+                          size='icon'
+                          onClick={() => handleUpdateQuantity(product.id, product.quantity + 1)}
+                          className='h-8 w-8'>
+                          <Plus className='h-4 w-4' />
+                        </Button>
+                      </div>
+                      <div className='ml-auto'>
+                        <span className='font-medium'>
+                          Subtotal: R$ {calculateItemTotal(product).toFixed(2)}
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </Card>
             ))}
 
-            <div className='flex justify-between items-center mt-8'>
-              <div>
-                <span className='text-lg font-medium'>Total de itens: {cartProducts.length}</span>
+            <div className='flex flex-col md:flex-row justify-between items-center mt-8 gap-4'>
+              <div className='text-lg'>
+                <span className='font-medium'>
+                  Total de itens: {cartProducts.reduce((total, item) => total + item.quantity, 0)}
+                </span>
+                <br />
+                <span className='font-bold'>Total: R$ {calculateCartTotal().toFixed(2)}</span>
               </div>
               <div className='flex gap-4'>
                 <Button

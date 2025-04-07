@@ -15,6 +15,8 @@ import { toast } from 'sonner'
 import { Card, CardContent } from '@/components/ui/card'
 import { use } from 'react'
 import { Product, ProductCart } from '@/types/product'
+import { Input } from '@/components/ui/input'
+import { Minus, Plus } from 'lucide-react'
 
 // Type assertion for the imported JSON
 const typedProductList = productList as Product[]
@@ -29,6 +31,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
   const [selectedSize, setSelectedSize] = useState<string>('')
   const [selectedWeight, setSelectedWeight] = useState<string>('')
   const [selectedLength, setSelectedLength] = useState<string>('')
+  const [quantity, setQuantity] = useState<number>(1)
   const [isAddingToCart, setIsAddingToCart] = useState(false)
 
   useEffect(() => {
@@ -52,6 +55,11 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
     return <div>Produto não encontrado</div>
   }
 
+  const handleQuantityChange = (newQuantity: number) => {
+    if (newQuantity < 1) return
+    setQuantity(newQuantity)
+  }
+
   const handleAddToCart = () => {
     setIsAddingToCart(true)
 
@@ -64,7 +72,8 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
       imageUrl: product.imageUrl,
       size: selectedSize,
       weight: selectedWeight,
-      length: selectedLength
+      length: selectedLength,
+      quantity: quantity
     }
 
     // Add the product to the cart with selected options
@@ -107,6 +116,34 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
                 <p className='text-muted-foreground text-lg'>{product.description}</p>
 
                 <div className='text-3xl font-bold text-primary'>R$ {product.price.toFixed(2)}</div>
+              </div>
+
+              {/* Quantity Selector */}
+              <div className='space-y-4'>
+                <h3 className='text-xl font-semibold'>Quantidade</h3>
+                <div className='flex items-center gap-4'>
+                  <Button
+                    variant='outline'
+                    size='icon'
+                    onClick={() => handleQuantityChange(quantity - 1)}
+                    className='h-8 w-8'>
+                    <Minus className='h-4 w-4' />
+                  </Button>
+                  <Input
+                    type='number'
+                    value={quantity}
+                    onChange={(e) => handleQuantityChange(parseInt(e.target.value) || 1)}
+                    className='w-20 text-center'
+                    min={1}
+                  />
+                  <Button
+                    variant='outline'
+                    size='icon'
+                    onClick={() => handleQuantityChange(quantity + 1)}
+                    className='h-8 w-8'>
+                    <Plus className='h-4 w-4' />
+                  </Button>
+                </div>
               </div>
 
               {/* Size Options */}
