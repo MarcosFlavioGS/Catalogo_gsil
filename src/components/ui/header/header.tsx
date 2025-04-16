@@ -56,11 +56,6 @@ export function Header() {
               Contato
             </Link>
             <Link
-              href='/products/new'
-              className='block px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary transition-colors md:inline'>
-              Novo Produto
-            </Link>
-            <Link
               href='/products/delete'
               className='block px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary transition-colors md:inline'>
               Gerenciar Produtos
